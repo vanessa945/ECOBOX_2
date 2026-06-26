@@ -1,0 +1,339 @@
+/* ==========================================================================
+   【後台專用：典雅簡約風】顏色變數覆蓋
+   ========================================================================== */
+:root {
+  --cream: #e3e2d4;       
+  --green-pale: #8ab8a1;  
+  --green-deep: #6cae8b;  /* 💡 這裡同步換成新主色 */
+  --white: #ffffff;       
+  --text-dark: #23342b;   
+  --text-muted: #5a6e63;  
+  --border: rgba(108, 174, 139, 0.2); 
+  --shadow: 0 4px 16px rgba(35, 52, 43, 0.05); 
+}
+
+/* 確保公告卡片與按鈕的細節也一起變優雅 */
+.notice-card {
+  background: var(--white) !important;
+  border-left: 6px solid var(--green-pale) !important; /* 左側粉綠提示條 */
+  border-top: 1px solid var(--border) !important;
+  border-right: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: var(--shadow);
+}
+
+.notice-title {
+  color: var(--green-deep) !important;
+}
+
+.action-btn {
+  background: rgba(138, 184, 161, 0.15) !important; /* 輕盈的粉綠底 */
+  color: var(--green-deep) !important;
+  border: 1px solid var(--green-pale) !important;
+}
+
+.action-btn:hover {
+  background: var(--green-deep) !important; /* 滑過時反白變成沉穩深綠 */
+  color: var(--white) !important;
+  transform: translateY(-2px);
+}
+
+html { 
+  font-size: 10px; /* 關鍵：首頁是用 10px 作為 1rem 的基準，後台必須同步 */
+  scroll-behavior: smooth; 
+}
+
+body { 
+  background: var(--cream); 
+  margin: 0; 
+  color: var(--text-dark);
+  /* 關鍵：套用跟首頁一模一樣的微軟正黑體與 Noto Sans TC */
+  font-family: 'Noto Sans TC', 'Playfair Display', "Microsoft JhengHei", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+.seller-brand {
+  font-family: 'Playfair Display', 'Noto Sans TC', sans-serif;
+}
+
+/* 確保所有按鈕與輸入框也繼承一模一樣的字體，字才不會變形 */
+button, input, select, textarea {
+  font-family: inherit;
+}
+body { background: var(--cream); margin: 0; }
+
+/* 基礎重設：確保後台的超連結沒有難看的底線，顏色也會跟著 CSS 走 */
+a { color: inherit; text-decoration: none; }
+
+/* 後台導覽列 */
+.seller-header {
+  background: var(--green-deep);
+  color: var(--white);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+.header-left, .header-right { display: flex; align-items: center; gap: 16px; }
+.menu-toggle { font-size: 2.4rem; cursor: pointer; color: var(--white); }
+.seller-brand { display: flex; align-items: center; gap: 8px; font-size: 2rem; font-weight: 700; }
+.restaurant-badge { background: var(--amber-light); color: #b76e00; font-size: 1.3rem; padding: 4px 12px; border-radius: 20px; font-weight: 700; }
+.icon-btn { font-size: 2rem; color: var(--white); background: none; border: none; cursor: pointer; transition: transform 0.2s; }
+.icon-btn:hover { transform: scale(1.1); color: var(--amber); }
+
+/* 全螢幕大選單 (參考凱撒飯店風格) */
+.full-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 77, 46, 0.98); /* 深綠色底帶微透明 */
+  z-index: 200;
+  display: flex;
+  padding: 60px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+/* 當勾選隱藏的 checkbox 時打開選單 */
+#menu-checkbox { display: none; }
+#menu-checkbox:checked ~ .full-menu { opacity: 1; pointer-events: all; }
+
+.menu-close { position: absolute; top: 24px; right: 24px; font-size: 3rem; color: var(--white); cursor: pointer; }
+.menu-content { display: grid; grid-template-columns: 1fr 2fr; width: 100%; max-width: 1200px; margin: auto; gap: 60px; }
+.menu-main-title { color: var(--amber); font-size: 2.8rem; border-bottom: 2px solid var(--amber); padding-bottom: 12px; margin-bottom: 24px; }
+.menu-list { display: flex; flex-direction: column; gap: 20px; }
+.menu-item { font-size: 2.2rem; color: var(--white); font-weight: 500; transition: color 0.2s; display: block; }
+.menu-item:hover { color: var(--amber); padding-left: 10px; }
+
+/* 首頁儀表板佈局 */
+.dashboard-container { max-width: 1200px; margin: 100px auto 40px; padding: 0 24px; }
+.welcome-section { margin-bottom: 32px; }
+.welcome-section h2 { font-size: 2.8rem; color: var(--text-dark); }
+
+/* 數據卡片 */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 40px; }
+.stat-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow); }
+.stat-card .title { font-size: 1.4rem; color: var(--text-muted); margin-bottom: 8px; }
+.stat-card .value { font-size: 3.2rem; font-weight: 700; color: var(--green-deep); }
+.stat-card .value.orange { color: var(--amber); }
+
+/* 快捷操作與今日動態 */
+.panel-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+@media(max-width: 900px) { .panel-grid { grid-template-columns: 1fr; } }
+.panel { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+.panel-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: var(--text-dark); border-left: 4px solid var(--green-mid); padding-left: 10px; }
+
+.quick-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.action-btn { background: var(--green-pale); color: var(--green-deep); padding: 20px; border-radius: 12px; text-align: center; font-weight: 700; font-size: 1.6rem; transition: all 0.2s; display: block; }
+.action-btn:hover { background: var(--green-mid); color: var(--white); transform: translateY(-2px); }
+
+.order-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--cream); }
+.order-item:last-child { border-bottom: none; }
+
+/* Seller drawer menu */
+#menu-checkbox {
+  display: none;
+}
+
+.full-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  padding: 0;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#menu-checkbox:checked ~ .full-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.side-drawer {
+  width: 280px;
+  max-width: 82vw;
+  height: 100vh;
+  padding: 22px 18px;
+  background: var(--green-deep);
+  color: var(--white);
+  box-shadow: 8px 0 28px rgba(0, 0, 0, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  overflow-y: auto;
+}
+
+#menu-checkbox:checked ~ .full-menu .side-drawer {
+  transform: translateX(0);
+}
+
+.menu-backdrop {
+  flex: 1;
+  min-width: 0;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.drawer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.drawer-brand img {
+  width: 30px;
+  height: auto;
+}
+
+.menu-close {
+  position: static;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.menu-close:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.drawer-store-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  margin-bottom: 26px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.store-avatar {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 2rem;
+}
+
+.store-label {
+  margin-bottom: 3px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 1.2rem;
+}
+
+.store-name {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.full-menu .menu-content {
+  display: block;
+  width: auto;
+  max-width: none;
+  margin: 0;
+}
+
+.full-menu .menu-main-title {
+  margin: 0 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1.3rem;
+  letter-spacing: 0;
+}
+
+.full-menu .menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.full-menu .menu-item {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.full-menu .menu-item:hover {
+  padding-left: 12px;
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+  transform: translateX(3px);
+}
+
+/* Dashboard notice card */
+.stats-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.notice-card {
+  background: #fff8e8;
+  border-color: rgba(245, 158, 11, 0.28);
+}
+
+.notice-title {
+  margin-bottom: 10px;
+  color: #9a5b00;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.notice-card p {
+  margin: 0 0 8px;
+  color: var(--text-mid);
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+.notice-card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .side-drawer {
+    width: 260px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
